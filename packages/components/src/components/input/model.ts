@@ -3,7 +3,7 @@ import { GlobalProps, GlobalState } from '../../shared/model';
 export interface DBInputDefaultProps {
 	label: string;
 	type?: string;
-	variant?: 'error' | 'success' | 'warning';
+	variant?: 'error' | 'success' | 'warning' | 'information';
 	iconBefore?: string;
 	iconAfter?: string;
 	placeholder?: string;
@@ -17,7 +17,8 @@ export interface DBInputDefaultProps {
 export const iconVariants:any = {
 	'error': 'error',
 	'warning': 'error-triangle',
-	'success': 'check-circle'
+	'success': 'check-circle',
+	'information': 'info'
 }
 
 export type DBInputProps = DBInputDefaultProps  & GlobalProps;

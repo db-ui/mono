@@ -24,13 +24,14 @@ $icons-path: "../../../icons/" !default;
 .db-input {
 	--db-input-padding-inline-start: #{$db-spacing-fixed-sm};
 	--db-input-padding-inline-end: #{$db-spacing-fixed-sm};
+	--icon-margin-after: 0;
 
 	position: relative;
 
 	// padding-inline-end according to current amount of icons
 	&.icon-before {
 		--db-input-padding-inline-start: #{calc(
-				2 * $db-spacing-fixed-sm + 0.425rem
+				2 * $db-spacing-fixed-sm + 1.25rem - 0.375rem
 			)};
 
 		input {
@@ -51,15 +52,15 @@ $icons-path: "../../../icons/" !default;
 
 	&[data-variant].icon-after {
 		--db-input-padding-inline-end: #{calc(
-				2 * #{$db-spacing-fixed-sm} + 0.425rem + 0.75rem + #{$db-spacing-fixed-xs}
+				2 * #{$db-spacing-fixed-sm} + 0.425rem + 0.75rem + #{$db-spacing-fixed-sm}
 			)};
 
 		input {
 			padding-inline-end: var(--db-input-padding-inline-end);
 		}
 
-		.elm-state-icon::after {
-			margin-inline-end: calc(0.75rem + $db-spacing-fixed-xs);
+		.elm-state-icon::before {
+			margin-inline-end: calc(0.75rem + $db-spacing-fixed-sm);
 		}
 	}
 
@@ -74,17 +75,17 @@ $icons-path: "../../../icons/" !default;
 		align-items: center;
 		position: absolute;
 		top: 0;
-		padding: 0 $db-spacing-fixed-xs;
+		padding: 0 $db-spacing-fixed-sm;
 	}
 
-	.icon-after .db-icon.icon-after::before {
+	&.icon-after .db-icon.icon-after::before {
 		right: 0;
 	}
 
 	// currently not supported by firefox
 	&:has(> input:disabled) {
 		.db-icon,
-		.elm-state-icon::after {
+		.elm-state-icon::before {
 			opacity: 0.5;
 		}
 	}
@@ -259,6 +260,7 @@ $icons-path: "../../../icons/" !default;
 		&::before {
 			--icon-font-family: var(--db-base-icon-font-family);
 			--icon-font-size: var(--db-base-icon-font-size);
+			right: 0;
 		}
 
 		&::before {

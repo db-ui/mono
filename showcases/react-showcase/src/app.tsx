@@ -40,17 +40,30 @@ function App() {
 						label="Textlabel"
 						placeholder="irgendein Text"
 						iconBefore="edit"
-						iconAfter="heart"
 						variant="error"
+					/>
+
+					<DBInput
+						description="Das ist die Beschreibung"
+						label="Textlabel"
+						placeholder="irgendein Text"
+						iconBefore="edit"
+						iconAfter="heart"
+						variant="warning"
 					/>
 				</section>
 
 				<section className="db-ui-regular">
-					<DBInput label="Textlabel" placeholder="irgendein Text" />
+					<DBInput
+						label="Textlabel"
+						placeholder="irgendein Text"
+						iconAfter="heart"
+					/>
 				</section>
 
 				<section className="db-ui-functional">
-					<DBInput />
+					<DBInput label="Textlabel" placeholder="irgendein Text" />
+					<DBInput label="Textlabel" placeholder="irgendein Text" variant="information" />
 				</section>
 			</div>
 		</main>
