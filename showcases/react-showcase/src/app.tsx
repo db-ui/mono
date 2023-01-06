@@ -31,6 +31,7 @@ function App() {
 						label="Textlabel"
 						placeholder="irgendein Text"
 						iconBefore="edit"
+						id="input-expr"
 					/>
 				</section>
 
@@ -41,15 +42,18 @@ function App() {
 						placeholder="irgendein Text"
 						iconBefore="edit"
 						variant="error"
+						id="input-expr-error"
 					/>
 
 					<DBInput
 						description="Das ist die Beschreibung"
-						label="Textlabel"
+						label="Input required"
 						placeholder="irgendein Text"
 						iconBefore="edit"
 						iconAfter="heart"
 						variant="warning"
+						id="input-expr-warning"
+						required="true"
 					/>
 				</section>
 
@@ -58,12 +62,19 @@ function App() {
 						label="Textlabel"
 						placeholder="irgendein Text"
 						iconAfter="heart"
+						id="input-reg"
 					/>
 				</section>
 
 				<section className="db-ui-functional">
 					<DBInput label="Textlabel" placeholder="irgendein Text" />
-					<DBInput label="Textlabel" placeholder="irgendein Text" variant="information" />
+					<DBInput
+						label="Textinput disabled"
+						placeholder="irgendein Text"
+						variant="information"
+						id="input-func"
+						disabled="true"
+					/>
 				</section>
 			</div>
 		</main>

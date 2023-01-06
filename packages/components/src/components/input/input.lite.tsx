@@ -4,7 +4,7 @@ import { DBIcon } from '../icon';
 import "./input.scss";
 
 useMetadata({
-  isAttachedToShadowDom: true,
+  isAttachedToShadowDom: false,
   component: {
     includeIcon: false,
     properties: [],
@@ -22,7 +22,12 @@ export default function DBInput(props: DBInputProps) {
 
   return (
 		<div
-			class={'db-input' + (props.className || '') + (props.iconBefore ? ' icon-before' : '')  + (props.iconAfter ? ' icon-after' : '')}
+			class={
+				'db-input' +
+				(props.className || '') +
+				(props.iconBefore ? ' icon-before' : '') +
+				(props.iconAfter ? ' icon-after' : '')
+			}
 			data-variant={props.variant}>
 			<Show when={state.stylePath}>
 				<link rel="stylesheet" href={state.stylePath} />
@@ -31,12 +36,16 @@ export default function DBInput(props: DBInputProps) {
 				<DBIcon icon={props.iconBefore} className=" icon-before" />
 			</Show>
 			<input
+				id={props.id}
 				name={props.name}
 				type={props.type || 'text'}
 				placeholder={props.placeholder}
+				aria-labelledby={props.id + '-label'}
+				disabled={props.disabled}
+				required={props.required}
 			/>
-			<label for={props.name} aria-hidden="true" id="id-label">
-				{props.label}
+			<label for={props.id} aria-hidden="true" id={props.id + '-label'}>
+				{props.label + (props.required ? " *" : "" )}
 			</label>
 			<Show when={props.description}>
 				<p className="description">{props.description}</p>

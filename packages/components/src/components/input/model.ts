@@ -1,14 +1,15 @@
 import { GlobalProps, GlobalState } from '../../shared/model';
 
 export interface DBInputDefaultProps {
+	id: string;
 	label: string;
-	type?: string;
+	type?: 'text' | 'search' | 'date' | 'number'
 	variant?: 'error' | 'success' | 'warning' | 'information';
 	iconBefore?: string;
 	iconAfter?: string;
 	placeholder?: string;
-	id?: string;
 	disabled?: boolean;
+	required?: boolean;
 	value?: any;
 	description?: string;
 	name?: string;
