@@ -25,6 +25,7 @@ $icons-path: "../../../icons/" !default;
 	--db-input-padding-inline-start: #{$db-spacing-fixed-sm};
 	--db-input-padding-inline-end: #{$db-spacing-fixed-sm};
 	--icon-margin-after: 0;
+	--db-input-label-max-width: 80%;
 
 	position: relative;
 
@@ -33,6 +34,7 @@ $icons-path: "../../../icons/" !default;
 		--db-input-padding-inline-start: #{calc(
 				2 * $db-spacing-fixed-sm + 1.25rem - 0.375rem
 			)};
+		--db-input-label-max-width: 70%;
 
 		input {
 			padding-inline-start: var(--db-input-padding-inline-start);
@@ -54,6 +56,7 @@ $icons-path: "../../../icons/" !default;
 		--db-input-padding-inline-end: #{calc(
 				2 * #{$db-spacing-fixed-sm} + 0.425rem + 0.75rem + #{$db-spacing-fixed-sm}
 			)};
+		--db-input-label-max-width: 61%;
 
 		input {
 			padding-inline-end: var(--db-input-padding-inline-end);
@@ -106,6 +109,14 @@ $icons-path: "../../../icons/" !default;
 		height: $db-sizing-md;
 		// TODO lets discuss this her: https://github.com/db-ui/core/issues/223
 		pointer-events: none;
+		// setting max-width to prevent users from too long labels by displaying text-overflow: ellipsis
+		max-width: var(--db-input-label-max-width, 80%);
+
+		span:first-child {
+			text-overflow: ellipsis;
+  			white-space: nowrap;
+  			overflow: hidden;
+		}
 	}
 
 	.description {
