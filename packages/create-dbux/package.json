@@ -1,0 +1,42 @@
+{
+  "name": "create-dbux",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Create a new app with DB UX System",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/db-ui/mono"
+  },
+  "homepage": "https://db-ui.github.io/mono/",
+  "bugs": {
+    "url": "https://github.com/db-ui/mono/issues"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "bin": {
+    "create-dbux": "dist/main.js"
+  },
+  "main": "dist/main.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "build": "npm-run-all build:parcel -p mv:*",
+    "build:parcel": "parcel build",
+    "mv:dist": "cpr dist ../../build-outputs/create-dbux/dist -o",
+    "mv:package.json": "cpr package.json ../../build-outputs/create-dbux/package.json -o",
+    "mv:readme": "cpr README.md ../../build-outputs/create-dbux/README.md -o",
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "commander": "^10.0.0",
+    "cpr": "3.0.1",
+    "cross-spawn": "7.0.3",
+    "inquirer": "^9.1.4"
+  },
+  "devDependencies": {
+    "parcel": "2.8.3"
+  },
+  "source": "src/index.js"
+}

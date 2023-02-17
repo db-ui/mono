@@ -17,13 +17,13 @@ echo "goto build-outputs"
 cd build-outputs || exit 1
 
 # TODO: Add other build as well
-for PACKAGE in 'eslint-plugin' 'foundations' 'components' 'ngx-components' 'react-components' 'v-components' 'web-components'; do
+for PACKAGE in 'create-dbux' 'foundations' 'components' 'ngx-components' 'react-components' 'v-components' 'web-components'; do
 	echo "Start $PACKAGE bundle:"
 
 	echo "🆚 Update Version"
 	npm version --no-git-tag-version "$VALID_SEMVER_VERSION" --workspace=@db-ui/"$PACKAGE"
 
-	if [[ $PACKAGE != 'foundations' && $PACKAGE != 'eslint-plugin' ]]; then
+	if [[ $PACKAGE != 'foundations' && $PACKAGE != 'eslint-plugin' && $PACKAGE != 'create-dbux' ]]; then
 		echo "🕵️‍ Set foundations dependency"
 		npm pkg set dependencies.@db-ui/foundations="$VALID_SEMVER_VERSION" --workspace=@db-ui/"$PACKAGE"
 		if [[ $PACKAGE != 'components' ]]; then
@@ -32,7 +32,11 @@ for PACKAGE in 'eslint-plugin' 'foundations' 'components' 'ngx-components' 'reac
 	fi
 
 	echo "📦 Create npm package"
-	npm pack --quiet --workspace=@db-ui/"$PACKAGE"
+	if [[ $PACKAGE == 'create-dbux' ]]; then
+		npm pack --quiet --workspace="$PACKAGE"
+	else
+		npm pack --quiet --workspace=@db-ui/"$PACKAGE"
+	fi
 done
 
 TAG="latest"
@@ -58,8 +62,12 @@ for REGISTRY in 'GITHUB' 'NPM'; do
 	fi
 
 	# TODO: Add other build as well
-	for PACKAGE in 'eslint-plugin' 'foundations' 'components' 'ngx-components' 'react-components' 'v-components' 'web-components'; do
+	for PACKAGE in 'create-dbux' 'foundations' 'components' 'ngx-components' 'react-components' 'v-components' 'web-components'; do
 		echo "⤴ Publish $PACKAGE with tag $TAG to $REGISTRY"
-		npm publish --tag "$TAG" db-ui-"$PACKAGE"-"$VALID_SEMVER_VERSION".tgz
+		if [[ $PACKAGE == 'create-dbux' ]]; then
+			npm publish --tag "$TAG" "$PACKAGE"-"$VALID_SEMVER_VERSION".tgz
+		else
+			npm publish --tag "$TAG" db-ui-"$PACKAGE"-"$VALID_SEMVER_VERSION".tgz
+		fi
 	done
 done

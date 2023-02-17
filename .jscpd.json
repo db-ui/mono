@@ -17,6 +17,7 @@
 		"**/__snapshots__/**",
 		"**/.next/**",
 		"**/.github/**",
+		"**/templates/**",
 		"**/next-showcase/components/**",
 		"**/patternhub/**/components/**",
 		"**/*-example/index.html",

@@ -1,0 +1,47 @@
+{
+	"settings": {
+		"react": {
+			"version": "detect"
+		}
+	},
+	"env": {
+		"browser": true,
+		"es2021": true
+	},
+	"extends": ["prettier", "plugin:react/recommended"],
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true
+		},
+		"ecmaVersion": "latest",
+		"sourceType": "module"
+	},
+	"plugins": ["prettier", "react", "@typescript-eslint", "@db-ui"],
+	"rules": {
+		"@db-ui/v2-component-used": "warn",
+		"no-console": ["error", { "allow": ["warn", "error"] }],
+		"prettier/prettier": ["error"],
+		"linebreak-style": ["error", "unix"],
+		"quotes": ["error", "single"],
+		"semi": ["error", "always"],
+		"indent": ["error", 2],
+		"no-multiple-empty-lines": [
+			"error",
+			{ "max": 3, "maxBOF": 1, "maxEOF": 0 }
+		],
+		"comma-dangle": ["error", "never"],
+		"jsx-quotes": ["error", "prefer-double"],
+		"react/function-component-definition": [
+			"error",
+			{ "namedComponents": "function-declaration" }
+		],
+		"react/react-in-jsx-scope": "off",
+		"no-undef": "off",
+		"no-unused-vars": "off",
+		"prefer-destructuring": "off",
+		"object-curly-spacing": "off",
+		"arrow-parens": "off",
+		"capitalized-comments": "off"
+	}
+}

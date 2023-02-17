@@ -1,0 +1,4 @@
+/* example styles */
+.container-with-padding {
+	padding: var(--db-spacing-fixed-md);
+}

@@ -9,7 +9,7 @@
   },
   "homepage": "https://db-ui.github.io/mono/",
   "bugs": {
-    "url": "https://github.com/db-ui/one/issues"
+    "url": "https://github.com/db-ui/mono/issues"
   },
   "author": "",
   "license": "Apache-2.0",
@@ -24,6 +24,7 @@
     "build": "npm-run-all build:*",
     "build-outputs": "npm-run-all -p build-outputs:*",
     "build-outputs:components": "npm run copy-output --workspace=@db-ui/components",
+    "build-outputs:create-dbux": "npm run build --workspace=create-dbux",
     "build-outputs:foundations": "npm run copy-build --workspace=@db-ui/foundations",
     "build-outputs:ngx-components": "npm run build --workspace=@db-ui/ngx-components",
     "build-outputs:react-components": "npm run build --workspace=@db-ui/react-components",
