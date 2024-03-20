@@ -5,21 +5,14 @@
 }
 @if (!page) {
 	<db-page type="fixedHeaderFooter" [fadeIn]="true">
-		<db-header
-			header
-			[drawerOpen]="drawerOpen"
-			(onToggle)="toggleDrawer($event)"
-		>
-			<db-brand
-				brand
-				title="Angular Showcase"
-				src="./assets/db_logo.svg"
-				href="/angular-showcase"
-			>
-				Showcase
-			</db-brand>
-			<db-main-navigation *dbNavigation>
-				@for (item of navigationItems; track item.label) {
+	<db-header
+		header
+		[drawerOpen]="drawerOpen"
+		(onToggle)="toggleDrawer($event)"
+	>
+		<db-brand brand>Showcase</db-brand>
+		<db-main-navigation *dbNavigation>
+			@for (item of navigationItems; track item.label) {
 					<app-nav-item [navItem]="item"> </app-nav-item>
 				}
 			</db-main-navigation>

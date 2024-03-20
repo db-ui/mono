@@ -23,6 +23,7 @@ import LinkComponent from '../components/link';
 import SectionComponent from '../components/section';
 import TextareaComponent from '../components/textarea';
 import IconComponent from '../components/icon';
+import BrandComponent from '../components/brand';
 
 export type NavigationItem = {
 	path: string;
@@ -60,18 +61,6 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
 				path: 'main-navigation',
 				label: 'MainNavigation',
 				component: <MainNavigationComponent />
-			},
-
-			{
-				path: 'test',
-				label: 'Test',
-				subNavigation: [
-					{
-						path: 'test2',
-						label: 'NavigationItem',
-						component: <NavigationItemComponent />
-					}
-				]
 			}
 		])
 	},
@@ -80,6 +69,11 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
 		path: '04',
 		label: '04 Data-Display',
 		subNavigation: getSortedNavigationItems([
+			{
+				path: 'brand',
+				label: 'Brand',
+				component: <BrandComponent />
+			},
 			{
 				path: 'infotext',
 				label: 'Infotext',
