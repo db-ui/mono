@@ -61,6 +61,8 @@ $default-icon-font-size: var(--db-icon-font-size, #{$default-icon-size-rem});
 			@if $position == "after" {
 				--db-icon-after: "#{$icon}";
 				content: $default-icon-content-after;
+				content: $default-icon-content-after /
+					""; // Hiding icon from screenreaders, https://www.w3.org/TR/css-content-3/#alt
 				margin-inline-start: $default-icon-margin-start;
 			}
 		}
@@ -110,6 +112,7 @@ $default-icon-font-size: var(--db-icon-font-size, #{$default-icon-size-rem});
 	alt: "";
 
 	content: $default-icon-content; // TODO: ONLY FOR data-icon
+	content: $default-icon-content / ""; // TODO: ONLY FOR data-icon and hiding icon from screenreaders, https://www.w3.org/TR/css-content-3/#alt
 	color: var(--db-current-icon-color, inherit);
 
 	display: inline-block;
