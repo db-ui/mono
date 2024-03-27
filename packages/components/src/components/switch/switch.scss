@@ -1,0 +1,232 @@
+@use "@db-ui/foundations/build/scss/variables";
+@use "@db-ui/foundations/build/scss/colors";
+@use "@db-ui/foundations/build/scss/fonts";
+@use "@db-ui/foundations/build/scss/helpers";
+@use "@db-ui/foundations/build/scss/icons";
+@use "../../styles/form-components";
+
+$switch-fixed-padding: helpers.to-rem(2);
+$switch-border-workaround: calc(
+	#{variables.$db-border-height-2xs} / 2 * var(--device-pixel-ratio, 0)
+);
+
+$switch-inactive-thumb-size: calc(
+	#{form-components.$font-size-height} - #{$switch-fixed-padding} * 2
+);
+
+$switch-active-thumb-size: calc(
+	#{form-components.$font-size-height} - #{$switch-border-workaround}
+);
+
+$checked-active-transition-size: calc(
+	#{form-components.$font-size-height} - #{$switch-fixed-padding} * 2
+);
+
+%active-transition {
+	&::before {
+		inline-size: calc(
+			#{$switch-active-thumb-size} - #{$switch-fixed-padding} * 2 + #{variables.$db-spacing-fixed-2xs}
+		);
+		margin: 0;
+	}
+
+	&:checked {
+		&::before {
+			block-size: $checked-active-transition-size;
+		}
+	}
+}
+
+.db-switch {
+	@extend %check-element;
+	justify-content: space-between;
+	user-select: none;
+
+	@include helpers.active {
+		& > input {
+			@extend %active-transition;
+		}
+	}
+
+	& > input {
+		--db-icon-margin-start: 0;
+		--thumb-position: calc(0% + #{$switch-fixed-padding});
+		@extend %db-overwrite-font-size-sm;
+
+		@include icons.set-icon("close", "after");
+		appearance: none;
+
+		inline-size: calc(
+			#{form-components.$font-size-height} * 2 + #{$switch-fixed-padding}
+		);
+		block-size: form-components.$font-size-height;
+		box-sizing: content-box;
+
+		display: flex;
+		align-items: center;
+		gap: $switch-fixed-padding;
+
+		background-color: colors.$db-current-color-bg-enabled;
+		border-radius: variables.$db-border-radius-full;
+
+		@include helpers.active {
+			@extend %active-transition;
+		}
+
+		&::after {
+			visibility: hidden;
+			align-self: center;
+			aspect-ratio: 1;
+		}
+
+		// thumb
+		&::before {
+			content: "";
+			aspect-ratio: 1;
+			block-size: $switch-inactive-thumb-size;
+			background: colors.$db-current-color-enabled;
+			border-radius: variables.$db-border-radius-full;
+			transform: translateX(var(--thumb-position));
+
+			margin-inline-end: calc(
+				#{$switch-active-thumb-size} - #{$switch-inactive-thumb-size}
+			);
+
+			transition:
+				margin variables.$db-transition-duration-fast
+					variables.$db-transition-timing-emotional,
+				inline-size variables.$db-transition-duration-fast
+					variables.$db-transition-timing-emotional,
+				block-size variables.$db-transition-duration-fast
+					variables.$db-transition-timing-emotional,
+				transform variables.$db-transition-duration-fast
+					variables.$db-transition-timing-emotional;
+
+			// Adopted by https://www.heise.de/developer/artikel/a11y-Reduced-Motion-4356171.html
+			@media (prefers-reduced-motion: reduce) {
+				transition-duration: 0.01s !important;
+			}
+		}
+
+		/* positioned at the end of the track: track length - 100% (thumb width) */
+		&:checked {
+			--db-current-icon-color: #{colors.$db-current-color-bg-enabled};
+			--thumb-position: calc(100% + #{$switch-fixed-padding});
+
+			background-color: colors.$db-current-color-enabled;
+
+			@include helpers.hover {
+				background-color: colors.$db-current-color-hover;
+				border-color: colors.$db-current-color-hover;
+			}
+
+			@include helpers.active {
+				background-color: colors.$db-current-color-pressed;
+				border-color: colors.$db-current-color-pressed;
+			}
+
+			&::before {
+				block-size: $switch-active-thumb-size;
+				background-color: colors.$db-current-color-bg-enabled;
+				margin: 0;
+			}
+		}
+	}
+
+	&[data-variant="hidden"] {
+		gap: 0;
+	}
+
+	&[data-size="small"] {
+		gap: variables.$db-spacing-fixed-2xs;
+
+		& > input {
+			@extend %db-overwrite-font-size-xs;
+		}
+	}
+
+	&[data-emphasis="strong"] {
+		@include helpers.active {
+			& > input {
+				&::before {
+					block-size: $checked-active-transition-size;
+				}
+			}
+		}
+
+		& > input {
+			--db-check-element-border-color: #{colors.$db-current-color-bg-enabled};
+			@extend %db-critical-contrast-low;
+
+			@include helpers.hover {
+				background-color: colors.$db-current-color-bg-hover;
+				border-color: colors.$db-current-color-bg-hover;
+			}
+
+			@include helpers.active {
+				background-color: colors.$db-current-color-bg-pressed;
+				border-color: colors.$db-current-color-bg-pressed;
+
+				&::before {
+					block-size: $checked-active-transition-size;
+				}
+			}
+
+			&:not(:checked) {
+				--thumb-position: calc(0% - #{$switch-border-workaround});
+			}
+
+			&:checked {
+				@extend %db-successful-contrast-low;
+
+				&::before {
+					background-color: colors.$db-current-color-enabled;
+				}
+			}
+
+			&::before {
+				block-size: $switch-active-thumb-size;
+				margin: 0;
+			}
+		}
+	}
+
+	&[data-emphasis="strong"],
+	&[data-visual-aid="true"] {
+		& > input {
+			&::after {
+				visibility: visible;
+				block-size: $switch-active-thumb-size;
+			}
+
+			&:checked {
+				@include icons.set-icon("done", "after");
+
+				&::after {
+					transform: translateX(
+						calc(-100% - #{$switch-fixed-padding})
+					);
+					block-size: $switch-active-thumb-size;
+				}
+			}
+		}
+	}
+
+	& > input {
+		&[data-aid-icon] {
+			&:not(:checked) {
+				&::after {
+					content: attr(data-aid-icon);
+				}
+			}
+		}
+
+		&[data-aid-icon-after] {
+			&:checked {
+				&::after {
+					content: attr(data-aid-icon-after);
+				}
+			}
+		}
+	}
+}

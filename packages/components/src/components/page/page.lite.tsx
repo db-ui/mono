@@ -1,5 +1,7 @@
 import {
 	onMount,
+	onUnMount,
+	onUpdate,
 	Slot,
 	useMetadata,
 	useRef,
@@ -16,7 +18,15 @@ export default function DBPage(props: DBPageProps) {
 	const ref = useRef<HTMLDivElement>(null);
 	// jscpd:ignore-start
 	const state = useStore<DBPageState>({
-		fontsLoaded: false
+		fontsLoaded: false,
+		devicePixelRatio: 0,
+		updatePixelRatio: () => {
+			if (window.devicePixelRatio % 0.5 !== 0) {
+				state.devicePixelRatio = 1 / window.devicePixelRatio;
+			} else {
+				state.devicePixelRatio = 0;
+			}
+		}
 	});
 
 	onMount(() => {
@@ -29,6 +39,26 @@ export default function DBPage(props: DBPageProps) {
 		} else {
 			state.fontsLoaded = true;
 		}
+
+		matchMedia(
+			`(resolution: ${window.devicePixelRatio}dppx)`
+		).addEventListener('change', state.updatePixelRatio);
+		state.updatePixelRatio();
+	});
+
+	onUpdate(() => {
+		if (ref) {
+			ref.style.setProperty(
+				'--device-pixel-ratio',
+				state.devicePixelRatio.toString()
+			);
+		}
+	}, [ref, state.devicePixelRatio]);
+
+	onUnMount(() => {
+		matchMedia(
+			`(resolution: ${window.devicePixelRatio}dppx)`
+		).removeEventListener('change', state.updatePixelRatio);
 	});
 	// jscpd:ignore-end
 
