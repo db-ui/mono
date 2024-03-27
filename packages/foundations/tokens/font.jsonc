@@ -190,9 +190,41 @@
 				}
 			}
 		},
+		"db-screenflex": {
+			"name": {
+				"value": "'DB Screen Flex'",
+				"attributes": {
+					"target": "web"
+				}
+			},
+			"local-name": {
+				"value": "DB Screen Flex",
+				"attributes": {
+					"target": "web"
+				}
+			},
+			"local-name-short": {
+				"value": "DB Flex",
+				"attributes": {
+					"target": "web"
+				}
+			},
+			"font-family": {
+				"value": "'DB Screen Flex'",
+				"attributes": {
+					"target": "web"
+				}
+			},
+			"woff2": {
+				"value": "'DBScreenFlexVF.woff2'",
+				"attributes": {
+					"target": "web"
+				}
+			}
+		},
 		"family": {
 			"sans": {
-				"value": "{font.db-screensans-regular.font-family.value}, Helvetica, Arial, sans-serif",
+				"value": "{font.db-screenflex.font-family.value}, Helvetica, Arial, sans-serif",
 				"attributes": {
 					"target": "web"
 				}
@@ -204,7 +236,7 @@
 				}
 			},
 			"bold": {
-				"value": "{font.db-screensans-bold.font-family.value}, Helvetica, Arial, sans-serif",
+				"value": "{font.db-screenflex.font-family.value}, Helvetica, Arial, sans-serif",
 				"attributes": {
 					"target": "web"
 				}
