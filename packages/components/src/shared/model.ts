@@ -96,6 +96,10 @@ export type PlacementProps = {
 		| 'bottom-end';
 };
 
+export type NavigationBehaviourState = {
+	handleNavigationItemClick: (event: unknown) => void;
+};
+
 export type GapProps = {
 	/**
 	 * If the absolute element should have a gap between the parent element.
