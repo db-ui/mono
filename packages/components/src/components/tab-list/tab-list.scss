@@ -1,36 +1,7 @@
 @use "@db-ui/foundations/build/scss/variables";
 @use "@db-ui/foundations/build/scss/colors";
-@use "../../styles/db-puls";
 @use "../../styles/scrollbar";
 @use "../../styles/form-components";
-
-%horizontal-puls {
-	.db-tab input {
-		@include db-puls.set-db-puls-horizontal;
-
-		&::after {
-			inset-block-start: calc(
-				#{variables.$db-spacing-fixed-xs} * 2 + #{form-components.$font-size-height} +
-					#{variables.$db-border-height-sm} * 2
-			);
-			inset-block-end: auto;
-		}
-
-		&:checked {
-			@include db-puls.show-db-puls-horizontal;
-		}
-	}
-}
-
-%vertical-puls {
-	.db-tab input {
-		@include db-puls.set-db-puls-vertical;
-
-		&:checked {
-			@include db-puls.show-db-puls-vertical;
-		}
-	}
-}
 
 .db-tab-list {
 	position: relative;
@@ -40,19 +11,10 @@
 		display: flex;
 		gap: variables.$db-spacing-fixed-sm;
 		scroll-behavior: smooth;
-
-		.db-tab {
-			position: relative;
-
-			& input {
-				@extend %db-puls;
-			}
-		}
 	}
 
 	&:not([aria-orientation="vertical"]) {
 		.db-tab-list-scroll-container {
-			@extend %horizontal-puls;
 			overflow-x: auto;
 			overflow-y: hidden;
 			inline-size: 100%;
@@ -89,10 +51,10 @@
 		}
 
 		&::before {
-			@extend %adaptive-neutral-component;
+			background-color: colors.$db-current-color-bg-transparent-semi-enabled;
 			content: "";
-			border-radius: variables.$db-border-radius-md;
-			block-size: variables.$db-border-height-lg;
+			border-radius: variables.$db-border-radius-xs;
+			block-size: variables.$db-border-height-xs;
 			position: absolute;
 
 			inset-inline: variables.$db-spacing-fixed-sm;
@@ -100,7 +62,7 @@
 			/* 2x padding + 1x margin + text + 3x border  */
 			inset-block-start: calc(
 				2 * #{variables.$db-spacing-fixed-xs} + #{variables.$db-spacing-fixed-sm} +
-					#{form-components.$font-size-height} + #{variables.$db-border-height-sm} *
+					#{form-components.$font-size-height} + #{variables.$db-border-height-3xs} *
 					3
 			);
 		}
@@ -108,7 +70,6 @@
 
 	&[aria-orientation="vertical"] {
 		.db-tab-list-scroll-container {
-			@extend %vertical-puls;
 			flex-direction: column;
 			overflow-x: hidden;
 			overflow-y: auto;
@@ -146,16 +107,16 @@
 		}
 
 		&::before {
-			@extend %adaptive-neutral-component;
+			background-color: colors.$db-current-color-bg-transparent-semi-enabled;
 			content: "";
-			border-radius: variables.$db-border-radius-md;
-			inline-size: variables.$db-border-height-lg;
+			border-radius: variables.$db-border-radius-xs;
+			inline-size: variables.$db-border-height-xs;
 			inset-block: variables.$db-spacing-fixed-sm;
 			position: absolute;
 
 			inset-inline-start: calc(
 				-1 * #{variables.$db-spacing-fixed-xs} + #{variables.$db-spacing-fixed-sm} +
-					#{variables.$db-border-height-sm}
+					#{variables.$db-border-height-3xs}
 			);
 		}
 	}

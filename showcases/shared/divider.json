@@ -1,23 +1,23 @@
 [
 	{
-		"name": "Tonality",
+		"name": "Density",
 		"examples": [
 			{
 				"name": "functional",
 				"style": { "width": "200px" },
-				"className": "db-ui-functional",
+				"className": "db-density-functional",
 				"props": {}
 			},
 			{
 				"name": "regular (Default)",
 				"style": { "width": "200px" },
-				"className": "db-ui-regular",
+				"className": "db-density-regular",
 				"props": {}
 			},
 			{
 				"name": "expressive",
 				"style": { "width": "200px" },
-				"className": "db-ui-expressive",
+				"className": "db-density-expressive",
 				"props": {}
 			}
 		]

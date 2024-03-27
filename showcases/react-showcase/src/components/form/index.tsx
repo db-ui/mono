@@ -1,5 +1,10 @@
 import { useEffect, useState } from 'react';
-import { DBTabList, DBTabPanel, DBTabs } from '@db-ui/react-components/src';
+import {
+	DBTabList,
+	DBTabPanel,
+	DBTabs,
+	DBDivider
+} from '@db-ui/react-components/src';
 import {
 	DBButton,
 	DBCheckbox,
@@ -28,6 +33,7 @@ const FormComponent = () => {
 	const [checked, setChecked] = useState<boolean[]>([true, false]);
 
 	const [accordionItems, setAccordionItems] = useState<KeyValueType[]>();
+	const [tabsTest, setTabsTest] = useState<boolean>(false);
 
 	useEffect(() => {
 		setTimeout(() => {
@@ -118,7 +124,7 @@ const FormComponent = () => {
 							{['X', 'Y', 'Z'].map((tag, index) => (
 								<li key={`tag-${tag}`}>
 									<DBTag
-										variant={
+										semantic={
 											index === 0
 												? undefined
 												: 'successful'
@@ -195,7 +201,7 @@ const FormComponent = () => {
 						</DBButton>
 						<DBButton
 							type="button"
-							variant="primary"
+							variant="brand"
 							onClick={(clickEvent) => {
 								// eslint-disable-next-line no-alert
 								alert(
@@ -232,6 +238,27 @@ const FormComponent = () => {
 					<dd>{JSON.stringify(tags)}</dd>
 				</dl>
 
+				<DBDivider />
+
+				<DBButton
+					onClick={() => {
+						setTabsTest(!tabsTest);
+					}}>
+					TabsTest
+				</DBButton>
+				<DBTabs>
+					<DBTabList>
+						<DBTab>Test 1</DBTab>
+						<DBTab>Test 2</DBTab>
+						{tabsTest && <DBTab>Test 3</DBTab>}
+					</DBTabList>
+					<DBTabPanel>Tab Panel 1</DBTabPanel>
+					<DBTabPanel>Tab Panel 2</DBTabPanel>
+					{tabsTest && <DBTabPanel>Tab Panel 3</DBTabPanel>}
+				</DBTabs>
+
+				<DBDivider />
+
 				<DBAccordion>
 					{accordionItems?.map((item) => (
 						<DBAccordionItem key={item.key} title={item.key}>
@@ -239,17 +266,6 @@ const FormComponent = () => {
 						</DBAccordionItem>
 					))}
 				</DBAccordion>
-
-				<DBTabs>
-					<DBTabList>
-						<DBTab>Test 1</DBTab>
-						<DBTab>Test 2</DBTab>
-						<DBTab>Test 3</DBTab>
-					</DBTabList>
-					<DBTabPanel>Tab Panel 1</DBTabPanel>
-					<DBTabPanel>Tab Panel 2</DBTabPanel>
-					<DBTabPanel>Tab Panel 3</DBTabPanel>
-				</DBTabs>
 
 				<DBSelect
 					id="select-test"

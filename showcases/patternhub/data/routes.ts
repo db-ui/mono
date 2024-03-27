@@ -94,8 +94,8 @@ const componentChildren: NavigationItem[] = [
 		path: '/components/feedback',
 		subNavigation: [
 			{
-				label: 'DBAlert',
-				name: 'alert'
+				label: 'DBNotification',
+				name: 'notification'
 			},
 			{
 				label: 'DBBadge',
@@ -204,13 +204,13 @@ export const ROUTES: NavigationItem[] = [
 				]
 			},
 			{
-				label: 'Tonalities',
-				path: '/foundations/tonalities',
+				label: 'Densities',
+				path: '/foundations/densities',
 				subNavigation: [
-					{ label: 'Readme', path: '/foundations/tonalities/readme' },
+					{ label: 'Readme', path: '/foundations/densities/readme' },
 					{
 						label: 'Examples',
-						path: '/foundations/tonalities/examples'
+						path: '/foundations/densities/examples'
 					}
 				]
 			},
@@ -232,6 +232,7 @@ export const ROUTES: NavigationItem[] = [
 		path: '/components',
 		subNavigation: [
 			{ label: 'Readme', path: '/components/readme' },
+			{ label: 'Validation', path: '/components/validation' },
 			...componentChildren.map((category) => ({
 				...category,
 				subNavigation: category?.subNavigation?.map((component) => ({

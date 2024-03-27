@@ -52,6 +52,24 @@
 		100% + 2px + var(--db-popover-distance) * var(--db-popover-gap, 0)
 	);
 
+	&:not([data-placement]),
+	&[data-placement="bottom"],
+	&[data-placement="top"] {
+		--db-popover-center-x: -50%;
+	}
+
+	&[data-placement="left"],
+	&[data-placement="right"] {
+		--db-popover-center-y: -50%;
+	}
+
+	&[data-placement="bottom"],
+	&[data-placement="top"],
+	&[data-placement="left"],
+	&[data-placement="right"] {
+		inset-#{$secondary}-start: 50%;
+	}
+
 	&[data-placement$="end"] {
 		inset-#{$secondary}-end: 0;
 	}
@@ -115,7 +133,7 @@
 	}
 
 	&:not([data-animation="disabled"]) {
-		animation: popover-animation variables.$db-transition-emotional-straight
+		animation: popover-animation variables.$db-transition-straight-emotional
 			normal both;
 
 		&[data-delay="slow"] {
@@ -155,14 +173,14 @@
 	@extend %default-card;
 	@extend %popover-placement;
 
-	@extend %component-border;
-
 	position: absolute;
-	background-color: colors.$db-base-bg;
+	background-color: colors.$db-current-color-bg-lvl-1-enabled;
+	box-shadow: variables.$db-elevation-md;
 	visibility: hidden;
 	z-index: 1;
 	// i HTML tags browsers default styling reset
 	font-style: normal;
+	white-space: nowrap;
 
 	&[data-width="fixed"] {
 		inline-size: max-content;

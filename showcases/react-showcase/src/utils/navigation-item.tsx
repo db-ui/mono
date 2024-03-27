@@ -12,7 +12,7 @@ import TagComponent from '../components/tag';
 import DrawerComponent from '../components/drawer';
 import SelectComponent from '../components/select';
 import RadioComponent from '../components/radio';
-import AlertComponent from '../components/alert';
+import NotificationComponent from '../components/notification';
 import ButtonComponent from '../components/button';
 import CardComponent from '../components/card';
 import DividerComponent from '../components/divider';
@@ -42,7 +42,11 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
 		path: '06',
 		label: '06 Feedback',
 		subNavigation: getSortedNavigationItems([
-			{ path: 'alert', label: 'Alert', component: <AlertComponent /> },
+			{
+				path: 'notification',
+				label: 'Notification',
+				component: <NotificationComponent />
+			},
 			{ path: 'badge', label: 'Badge', component: <BadgeComponent /> }
 		])
 	},

@@ -31,27 +31,27 @@ const getPage = ({
 		id={id}
 		key={key}
 		tabIndex={tabIndex}
-		slotHeader={
+		header={
 			<DBHeader
-				slotBrand={
+				brand={
 					<DBBrand
 						title="DBHeader"
 						imgSrc="https://db-ui.github.io/images/db_logo.svg">
 						DBHeader
 					</DBBrand>
 				}
-				slotMetaNavigation={
+				metaNavigation={
 					<>
 						<DBLink href="#">Imprint</DBLink>
 						<DBLink href="#">Help</DBLink>
 					</>
 				}
-				slotCallToAction={
+				callToAction={
 					<DBButton icon="search" variant="text" noText>
 						Search
 					</DBButton>
 				}
-				slotActionBar={
+				actionBar={
 					<>
 						<DBButton icon="account" variant="text" noText>
 							Profile
@@ -75,7 +75,7 @@ const getPage = ({
 				</DBMainNavigation>
 			</DBHeader>
 		}
-		slotFooter={<>Footer Content</>}>
+		footer={<>Footer Content</>}>
 		My Page Content
 	</DBPage>
 );

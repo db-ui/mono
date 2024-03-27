@@ -9,10 +9,10 @@ import { DBPage } from '../../../../output/angular/src/components/page/page';
 import {
 	COLOR,
 	COLORS,
-	TONALITIES,
-	TONALITY,
+	DENSITIES,
+	DENSITY,
 	COLOR_CONST,
-	TONALITY_CONST
+	DENSITY_CONST
 } from '../../../../packages/components/src/shared/constants';
 import { DBButton } from '../../../../output/angular/src/components/button';
 import { ActionBarDirective } from '../../../../output/angular/src/components/header/ActionBar.directive';
@@ -50,11 +50,11 @@ export class AppComponent implements OnInit {
 	drawerOpen = false;
 	navigationItems: NavItem[] = getSortedNavigationItems(NAVIGATION_ITEMS);
 
-	tonalities = TONALITIES;
+	densities = DENSITIES;
 	colors = COLORS;
 
-	tonality = TONALITY.REGULAR;
-	color = COLOR.BASE;
+	density = DENSITY.REGULAR;
+	color = COLOR.NEUTRAL_BG_LEVEL_1;
 
 	page?: string;
 	fullscreen = false;
@@ -66,8 +66,8 @@ export class AppComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.route.queryParams.subscribe((parameters) => {
-			if (parameters[TONALITY_CONST]) {
-				this.tonality = parameters[TONALITY_CONST];
+			if (parameters[DENSITY_CONST]) {
+				this.density = parameters[DENSITY_CONST];
 			}
 
 			if (parameters[COLOR_CONST]) {
@@ -85,13 +85,13 @@ export class AppComponent implements OnInit {
 	}
 
 	getChangeableClasses = () => {
-		return `db-ui-${this.tonality} db-bg-${this.color}`;
+		return `db-density-${this.density} db-${this.color}`;
 	};
 
 	onChange = async (value: any) => {
 		await this.router.navigate([], {
 			relativeTo: this.route,
-			queryParams: { tonality: this.tonality, color: this.color },
+			queryParams: { density: this.density, color: this.color },
 			queryParamsHandling: 'merge'
 		});
 	};

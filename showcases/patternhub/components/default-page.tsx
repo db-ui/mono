@@ -66,24 +66,26 @@ const DefaultPage = ({ children }: any) => {
 				<DBPage
 					fadeIn
 					type="fixedHeaderFooter"
-					slotHeader={
+					header={
 						<DBHeader
 							drawerOpen={drawerOpen}
 							onToggle={setDrawerOpen}
-							slotBrand={
+							brand={
 								<DBBrand
-									imgSrc="https://db-ui.github.io/images/db_logo.svg"
+									imgSrc={`${
+										process.env.NEXT_PUBLIC_BASE_PATH ?? ''
+									}/assets/images/db_logo.svg`}
 									title={process.env.NEXT_PUBLIC_APP_NAME}
 									anchorChildren>
 									{process.env.NEXT_PUBLIC_APP_NAME}
 								</DBBrand>
 							}
-							slotCallToAction={
-								<DBButton icon="search" variant="text" noText>
+							callToAction={
+								<DBButton icon="search" variant="ghost" noText>
 									Search
 								</DBButton>
 							}
-							slotActionBar={<VersionSwitcher />}>
+							actionBar={<VersionSwitcher />}>
 							<Navigation />
 						</DBHeader>
 					}>

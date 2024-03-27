@@ -116,7 +116,7 @@ export default function DBNavigationItem(props: DBNavigationItemProps) {
 							<DBButton
 								id={props.backButtonId}
 								icon="arrow_back"
-								variant="text"
+								variant="ghost"
 								onClick={(event) =>
 									state.handleBackClick(event)
 								}>
@@ -124,7 +124,7 @@ export default function DBNavigationItem(props: DBNavigationItemProps) {
 							</DBButton>
 						</div>
 					</Show>
-					<Slot name="sub-navigation"></Slot>
+					<Slot name="subNavigation"></Slot>
 				</menu>
 			</Show>
 		</li>

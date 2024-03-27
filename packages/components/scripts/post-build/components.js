@@ -178,7 +178,7 @@ const getComponents = () => [
 	},
 
 	{
-		name: 'alert'
+		name: 'notification'
 	},
 
 	{

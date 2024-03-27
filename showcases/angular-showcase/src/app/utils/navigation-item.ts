@@ -15,7 +15,7 @@ import { InputComponent } from '../components/input/input.component';
 import { ButtonComponent } from '../components/button/button.component';
 import { FormComponent } from '../components/form/form.component';
 import { LinkComponent } from '../components/link/link.component';
-import { AlertComponent } from '../components/alert/alert.component';
+import { NotificationComponent } from '../components/notification/notification.component';
 import { RadioComponent } from '../components/radio/radio.component';
 import { CheckboxComponent } from '../components/checkbox/checkbox.component';
 import { InfotextComponent } from '../components/infotext/infotext.component';
@@ -42,7 +42,11 @@ export const NAVIGATION_ITEMS: NavItem[] = [
 		path: '06',
 		label: '06 Feedback',
 		subNavigation: getSortedNavigationItems([
-			{ path: '06/alert', label: 'Alert', component: AlertComponent },
+			{
+				path: '06/notification',
+				label: 'Notification',
+				component: NotificationComponent
+			},
 			{ path: '06/badge', label: 'Badge', component: BadgeComponent }
 		])
 	},

@@ -1,4 +1,4 @@
-export * from './components/alert';
+export * from './components/notification';
 export * from './components/badge';
 export * from './components/brand';
 export * from './components/button';

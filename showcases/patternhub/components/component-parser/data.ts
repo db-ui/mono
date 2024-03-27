@@ -27,7 +27,7 @@ export type ComponentType = {
 		| 'p'
 		| 'a'
 		| 'div'
-		| 'alert'
+		| 'notification'
 		| 'brand'
 		| 'button'
 		| 'checkbox'

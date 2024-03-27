@@ -42,18 +42,18 @@ export type GlobalState = {
 	defaultValues?: { [key: string]: string };
 };
 
-export type DefaultVariantType =
+export type SemanticType =
 	| 'adaptive'
 	| 'neutral'
 	| 'critical'
 	| 'informational'
 	| 'warning'
 	| 'successful';
-export type DefaultVariantProps = {
+export type SemanticProps = {
 	/**
-	 * The variant defines the default variants for most components.
+	 * The semantic defines the default variants for most components.
 	 */
-	variant?: DefaultVariantType;
+	semantic?: SemanticType;
 };
 
 export type IconProps = {
@@ -207,14 +207,14 @@ export type FormCheckProps = {
 	/**
 	 * Hide the label of a radio/checkbox.
 	 */
-	labelVariant?: 'hidden';
+	variant?: 'hidden';
 };
 
 export type FormMessageProps = {
 	/**
-	 * Change the variant of the label to float
+	 * Change the variant of the label to float or hidden
 	 */
-	labelVariant?: 'above' | 'floating' | 'hidden';
+	variant?: 'above' | 'floating' | 'hidden';
 	/**
 	 * Text that appears in the form control when it has no value set
 	 */
@@ -223,6 +223,16 @@ export type FormMessageProps = {
 	 * Optional helper message for form components
 	 */
 	message?: string;
+
+	/**
+	 * Helper message for valid form components
+	 */
+	validMessage?: string;
+
+	/**
+	 * Helper message for invalid form components
+	 */
+	invalidMessage?: string;
 
 	/**
 	 * Set/overwrite icon for helper message for form components
@@ -295,6 +305,9 @@ export type FormMessageProps = {
 
 export type FormState = {
 	_messageId?: string;
+	_validMessageId?: string;
+	_invalidMessageId?: string;
+	_descByIds?: string;
 };
 
 export type InitializedState = {
@@ -349,13 +362,6 @@ export type LinkProps = {
 		| 'unsafe-url';
 	selected?: boolean;
 	text?: string;
-};
-
-export type CardProps = {
-	/**
-	 * The elevation attribute changes the style of the card (box-shadow).
-	 */
-	elevation?: 'default' | 'none';
 };
 
 export type ClickEvent<T> = MouseEvent;

@@ -14,7 +14,7 @@ import Form from '../components/form/Form.vue';
 import Button from '../components/button/Button.vue';
 import Input from '../components/input/Input.vue';
 import Link from '../components/link/Link.vue';
-import Alert from '../components/alert/Alert.vue';
+import Notification from '../components/notification/Notification.vue';
 import Card from '../components/card/Card.vue';
 import Checkbox from '../components/checkbox/Checkbox.vue';
 import Divider from '../components/divider/Divider.vue';
@@ -42,7 +42,11 @@ export const navigationItems: NavItem[] = [
 		path: '/06',
 		label: '06 Feedback',
 		subNavigation: getSortedNavigationItems([
-			{ path: '/06/alert', label: 'Alert', component: Alert },
+			{
+				path: '/06/notification',
+				label: 'Notification',
+				component: Notification
+			},
 			{ path: '/06/badge', label: 'Badge', component: Badge }
 		])
 	},

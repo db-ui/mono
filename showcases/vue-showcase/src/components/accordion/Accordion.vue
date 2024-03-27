@@ -5,7 +5,7 @@ import {
 	DBAccordion,
 	DBAccordionItem,
 	DBInfotext
-} from "../../../../../output/vue/vue3/src";
+} from "../../../../../output/vue/src";
 </script>
 
 <template>
@@ -13,7 +13,7 @@ import {
 		<template
 			#example="{ exampleIndex, variantIndex, exampleName, exampleProps }"
 		>
-			<DBInfotext size="small" variant="informational" icon="none">
+			<DBInfotext size="small" semantic="informational" icon="none">
 				{{ exampleName }}
 			</DBInfotext>
 			<DBAccordion :behaviour="exampleProps.behaviour">
