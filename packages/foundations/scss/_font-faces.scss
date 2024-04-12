@@ -16,6 +16,9 @@ $db-screensans-bold: assets-paths.$fonts-path +
 $db-screensans-digital-regular: assets-paths.$fonts-path +
 	internals.$db-font-db-screensans-digital-regular-woff2;
 
+$db-screenflex: assets-paths.$fonts-path +
+	internals.$db-font-db-screenflex-woff2;
+
 @font-face {
 	font-family: internals.$db-font-db-screenhead-light-font-family;
 	font-style: normal;
@@ -69,4 +72,13 @@ $db-screensans-digital-regular: assets-paths.$fonts-path +
 			internals.$db-font-db-screensans-digital-regular-local-name-short
 		),
 		url($db-screensans-digital-regular) format("woff2");
+}
+
+@font-face {
+	font-family: internals.$db-font-db-screenflex-font-family;
+	src:
+		local(internals.$db-font-db-screenflex-name),
+		local(internals.$db-font-db-screenflex-local-name),
+		local(internals.$db-font-db-screenflex-local-name-short),
+		url($db-screenflex) format("woff2");
 }
