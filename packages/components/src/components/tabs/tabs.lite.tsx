@@ -65,7 +65,9 @@ export default function DBTabs(props: DBTabsProps) {
 			if (ref) {
 				const childTabLists = ref.getElementsByClassName('db-tab-list');
 				if (childTabLists?.length > 0) {
-					const firstTabList = childTabLists.item(0);
+					const firstTabList = childTabLists
+						.item(0)
+						.querySelector('ul');
 					if (firstTabList) {
 						if (
 							!firstTabList
@@ -79,11 +81,10 @@ export default function DBTabs(props: DBTabsProps) {
 						}
 
 						if (props.behaviour === 'arrows') {
-							const container = firstTabList.querySelector('ul');
-							state.scrollContainer = container;
-							state.evaluateScrollButtons(container);
-							container.addEventListener('scroll', () => {
-								state.evaluateScrollButtons(container);
+							state.scrollContainer = firstTabList;
+							state.evaluateScrollButtons(firstTabList);
+							firstTabList.addEventListener('scroll', () => {
+								state.evaluateScrollButtons(firstTabList);
 							});
 						}
 					}

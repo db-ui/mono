@@ -45,7 +45,6 @@ export default function DBTabItem(props: DBTabItemProps) {
 					disabled={props.disabled}
 					ref={ref}
 					type="radio"
-					role="tab"
 					id={state._id}
 				/>
 

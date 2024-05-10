@@ -25,13 +25,13 @@ export default function DBTabPanel(props: DBTabPanelProps) {
 	// jscpd:ignore-end
 
 	return (
-		<article
+		<section
 			ref={ref}
 			class={cls('db-tab-panel', props.className)}
 			id={state._id}
 			role="tabpanel">
 			<Show when={props.content}> {props.content}</Show>
 			{props.children}
-		</article>
+		</section>
 	);
 }
