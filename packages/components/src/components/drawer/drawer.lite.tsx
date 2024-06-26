@@ -81,6 +81,7 @@ export default function DBDrawer(props: DBDrawerProps) {
 			onClick={(event) => {
 				state.handleClose(event);
 			}}
+			autofocus=""
 			onKeyDown={(event) => state.handleClose(event)}
 			data-backdrop={props.backdrop}>
 			<article
