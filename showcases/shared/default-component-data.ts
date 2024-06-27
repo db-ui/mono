@@ -20,6 +20,7 @@ export type DefaultComponentVariants = {
 	name: string;
 	examples: DefaultComponentExample[];
 	color?: string;
+	role?: string;
 };
 
 export type DefaultComponentProps = {
