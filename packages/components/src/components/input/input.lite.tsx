@@ -7,7 +7,7 @@ import {
 	useRef,
 	useStore
 } from '@builder.io/mitosis';
-import { cls, uuid } from '../../utils';
+import { cls, isArrayOfStrings, uuid } from '../../utils';
 import { DBInputProps, DBInputState } from './model';
 import {
 	DEFAULT_ID,
@@ -22,7 +22,7 @@ import {
 	InputEvent,
 	ChangeEvent,
 	InteractionEvent,
-	KeyValueType
+	ValueLabelType
 } from '../../shared/model';
 import { DBInfotext } from '../infotext';
 import { handleFrameworkEvent } from '../../utils/form-components';
@@ -91,6 +91,20 @@ export default function DBInput(props: DBInputProps) {
 				props.invalidMessage ||
 				ref?.validationMessage ||
 				DEFAULT_INVALID_MESSAGE
+			);
+		},
+		getDataList: (
+			_list?: string[] | ValueLabelType[]
+		): ValueLabelType[] => {
+			return Array.from(
+				!_list
+					? []
+					: isArrayOfStrings(_list)
+						? _list.map((_value: string) => ({
+								value: _value,
+								label: undefined
+							}))
+						: _list
 			);
 		}
 	});
@@ -170,14 +184,16 @@ export default function DBInput(props: DBInputProps) {
 			/>
 			<Show when={props.dataList}>
 				<datalist id={state._dataListId}>
-					<For each={props.dataList}>
-						{(option: KeyValueType) => (
+					<For each={state.getDataList(props.dataList)}>
+						{(option: ValueLabelType) => (
 							<option
 								key={
-									state._dataListId + '-option-' + option.key
+									state._dataListId +
+									'-option-' +
+									option.value
 								}
-								value={option.key}>
-								{option.value}
+								value={option.value}>
+								{option.label}
 							</option>
 						)}
 					</For>
