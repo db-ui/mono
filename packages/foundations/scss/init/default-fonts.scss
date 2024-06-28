@@ -30,6 +30,7 @@ $headlines: (
 	}
 }
 
+/* stylelint-disable */
 @each $headline, $size in $headlines {
 	#{string.unquote($headline)} {
 		line-height: var(
@@ -49,6 +50,7 @@ $headlines: (
 		}
 	}
 }
+/* stylelint-enable */
 
 p {
 	margin-block: variables.$db-spacing-fixed-md;
