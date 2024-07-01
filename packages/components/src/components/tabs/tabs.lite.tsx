@@ -83,7 +83,8 @@ export default function DBTabs(props: DBTabsProps) {
 		},
 		initTabs(init?: boolean) {
 			if (ref) {
-				const tabItems = ref.getElementsByClassName('db-tab-item');
+				const tabLists = ref.querySelector('.db-tab-list');
+				const tabItems = tabLists.getElementsByClassName('db-tab-item');
 				if (tabItems?.length > 0) {
 					Array.from<Element>(tabItems).forEach(
 						(tabItem: Element, index: number) => {
@@ -121,19 +122,27 @@ export default function DBTabs(props: DBTabsProps) {
 					);
 				}
 
-				const tabPanels = ref.getElementsByClassName('db-tab-panel');
+				const tabPanels = [
+					...Array.from<Element>(
+						ref.querySelectorAll('& > .db-tab-panel')
+					),
+					...Array.from<Element>(
+						ref.querySelectorAll('& > dbtabpanel > .db-tab-panel')
+					),
+					...Array.from<Element>(
+						ref.querySelectorAll('& > db-tab-panel > .db-tab-panel')
+					)
+				];
 				if (tabPanels?.length > 0) {
-					Array.from<Element>(tabPanels).forEach(
-						(panel: Element, index: number) => {
-							if (!panel.id) {
-								panel.id = `${state._name}-tab-panel-${index}`;
-								panel.setAttribute(
-									'aria-labelledby',
-									`${state._name}-tab-${index}`
-								);
-							}
+					tabPanels.forEach((panel: Element, index: number) => {
+						if (!panel.id) {
+							panel.id = `${state._name}-tab-panel-${index}`;
+							panel.setAttribute(
+								'aria-labelledby',
+								`${state._name}-tab-${index}`
+							);
 						}
-					);
+					});
 				}
 			}
 		}
