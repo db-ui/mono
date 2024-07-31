@@ -13,20 +13,7 @@ import {
 	type RunTestType,
 	type ScreenReaderTestType
 } from './data';
-
-const translations: Record<string, string[]> = {
-	button: ['Schalter'],
-	edit: ['Eingabefeld'],
-	'radio button': ['Auswahlschalter'],
-	blank: ['Leer'],
-	checked: ['aktiviert'],
-	' of ': [' von '],
-	clickable: ['anklickbar'],
-	'has auto complete': ['mit Auto Vervollständigung'],
-	unknown: ['Unbekannt'],
-	dialog: ['Dialogfeld'],
-	document: ['Dokument']
-};
+import { translations } from './translations';
 
 const cleanSpeakInstructions = (phraseLog: string[]): string[] =>
 	phraseLog.map((phrase) =>
