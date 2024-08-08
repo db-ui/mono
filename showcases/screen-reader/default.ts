@@ -25,7 +25,9 @@ const translations: Record<string, string[]> = {
 	'has auto complete': ['mit Auto Vervollständigung'],
 	unknown: ['Unbekannt'],
 	dialog: ['Dialogfeld'],
-	document: ['Dokument']
+	document: ['Dokument'],
+	collapsed: ['reduziert'],
+	expanded: ['erweitert']
 };
 
 const cleanSpeakInstructions = (phraseLog: string[]): string[] =>
@@ -41,7 +43,8 @@ const cleanSpeakInstructions = (phraseLog: string[]): string[] =>
 						sPhrase.includes('To click') ||
 						sPhrase.includes('To select') ||
 						sPhrase.includes('To interact') ||
-						sPhrase.includes('Press Control')
+						sPhrase.includes('Press Control') ||
+						sPhrase.includes('To expand')
 					)
 			)
 			.join('. ')
