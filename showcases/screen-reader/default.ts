@@ -15,6 +15,9 @@ import {
 } from './data';
 
 const translations: Record<string, string[]> = {
+	'check box': ['Kontrollfeld'],
+	'half checked': ['teilweise aktiviert'],
+	required: ['erforderlich'],
 	button: ['Schalter'],
 	edit: ['Eingabefeld'],
 	'radio button': ['Auswahlschalter'],
