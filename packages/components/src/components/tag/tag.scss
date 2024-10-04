@@ -11,7 +11,7 @@
 @use "../../styles/component";
 
 %no-text {
-	&[data-no-text="true"] {
+	&:is([data-no-text], [data-no-text="true"]) {
 		--icon-margin-after: 0;
 
 		@include icons.is-icon-text-replace();
@@ -23,7 +23,7 @@
 		}
 	}
 
-	&:not([data-no-text="true"]) {
+	&:not([data-no-text], [data-no-text="true"]) {
 		--db-padding-inline-start: #{variables.$db-spacing-fixed-2xs};
 
 		padding-inline: var(--db-padding-inline-start) #{variables.$db-spacing-fixed-2xs};
@@ -178,12 +178,14 @@
 	}
 
 	&:has(:disabled),
-	&[data-disabled="true"] {
+	&[data-disabled="true"],
+	&[data-disabled] {
 		opacity: component.$default-disabled;
 		pointer-events: none;
 	}
 
-	&[data-overflow="true"] {
+	&[data-overflow="true"],
+	&[data-overflow] {
 		max-inline-size: variables.$db-sizing-2xl;
 
 		> * {

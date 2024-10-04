@@ -30,7 +30,7 @@
 	}
 
 	// Square icon only buttons
-	&[data-no-text="true"] {
+	&:is([data-no-text], [data-no-text="true"]) {
 		@include icons.is-icon-text-replace();
 
 		padding: 0;
@@ -46,7 +46,7 @@
 
 		block-size: variables.$db-sizing-sm;
 
-		&:not([data-no-text="true"]) {
+		&:not([data-no-text="true"], [data-no-text]) {
 			padding: variables.$db-spacing-fixed-3xs
 				variables.$db-spacing-fixed-sm;
 
@@ -56,7 +56,7 @@
 		}
 
 		// Square icon only buttons
-		&[data-no-text="true"] {
+		&:is([data-no-text], [data-no-text="true"]) {
 			inline-size: variables.$db-sizing-sm;
 		}
 	}
@@ -108,6 +108,16 @@
 
 		&::before {
 			content: "";
+		}
+	}
+
+	// Workaround for current stencil implementation for header
+	&:has(> .db-button) {
+		margin: 0;
+		padding: 0;
+
+		&::before {
+			content: none;
 		}
 	}
 }

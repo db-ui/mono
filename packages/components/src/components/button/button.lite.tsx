@@ -3,10 +3,13 @@ import type { DBButtonProps, DBButtonState } from './model';
 import { cls } from '../../utils';
 import { ClickEvent } from '../../shared/model';
 
-useMetadata({
-	isAttachedToShadowDom: true
-});
+useMetadata({});
 
+/**
+ * This is a test comment
+ * @param props
+ * @constructor
+ */
 export default function DBButton(props: DBButtonProps) {
 	const ref = useRef<HTMLButtonElement>(null);
 	// jscpd:ignore-start
