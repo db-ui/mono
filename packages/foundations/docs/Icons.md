@@ -23,4 +23,4 @@ You can add an icon before or after a tag, by adding an `data-` attribute to you
 
 If you have custom icons and want to use them for foundations and/or in components, you need to generate a **woff2** file.
 
-[More information](./CustomIcons.md)
+[More information](./custom-icons)
