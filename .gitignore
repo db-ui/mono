@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2025 DB Systel GmbH
+#
+# SPDX-License-Identifier: Apache-2.0
+
 .DS_Store
 node_modules
 npm-debug.log
@@ -63,3 +67,8 @@ showcases/patternhub/public/iframe-resizer/*
 /output/stencil/loader
 /output/stencil/www
 **/.angular
+
+# Under no circumstances we should (git) ignore the necessary license files
+!**/*.license
+# … but this one file should actually be ignored
+.env.license
